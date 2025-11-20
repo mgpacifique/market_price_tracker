@@ -281,4 +281,4 @@ This project was developed to support agricultural development and promote fair 
 
 **Version**: 1.0.0  
 **Last Updated**: November 19, 2025  
-**Authors**: Agricultural Development Team
+**Authors**: Group Jayz
