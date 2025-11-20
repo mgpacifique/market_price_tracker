@@ -10,11 +10,13 @@
 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-orange)](https://www.mysql.com/)
 
-[![License](https://img.shields.io/badge/License-Educational-green)](LICENSE)## Features
+[![License](https://img.shields.io/badge/License-Educational-green)](LICENSE)
+
+## Features
 
 
 
----### Core Functionality
+### Core Functionality
 
 
 
