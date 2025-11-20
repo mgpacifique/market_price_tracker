@@ -1,4 +1,4 @@
-# 🌾 Local Agricultural Market Price Tracker# Local Agricultural Market Price Tracker
+# 🌾 Local Agricultural Market Price Tracker
 
 
 
