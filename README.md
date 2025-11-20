@@ -70,7 +70,8 @@ The Local Agricultural Market Price Tracker is a production-ready Python applica
 
 
 
----## Technology Stack
+---
+## Technology Stack
 
 
 
