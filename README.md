@@ -153,7 +153,9 @@ The Local Agricultural Market Price Tracker is a production-ready Python applica
 
 - Price trend charts
 
-- Market comparison visualizations### Step 2: Install Python Dependencies
+- Market comparison visualizations
+
+### Step 2: Install Python Dependencies
 
 
 
