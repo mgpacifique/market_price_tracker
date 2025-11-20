@@ -8,7 +8,7 @@
 
 
 
-[![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://www.python.org/)The Local Agricultural Market Price Tracker is a comprehensive Python application designed to help farmers and market participants access fair and reliable market information for agricultural products. The system enables users to track current prices, compare prices across different markets, and analyze price trends over time.
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://www.python.org/) :The Local Agricultural Market Price Tracker is a comprehensive Python application designed to help farmers and market participants access fair and reliable market information for agricultural products. The system enables users to track current prices, compare prices across different markets, and analyze price trends over time.
 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-orange)](https://www.mysql.com/)
 
