@@ -656,7 +656,8 @@ This project is created for educational purposes as part of ALU BSE coursework.
 
 **Version**: 2.0.0  
 **Last Updated**: November 20, 2025  
-**Status**: Production Ready ✅
+**Status**: Production Ready ✅  
+**Authors**: Group Jayz
 
 ---
 
