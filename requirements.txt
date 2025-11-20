@@ -1,0 +1,15 @@
+mysql-connector-python==8.2.0
+python-dotenv==1.0.0
+tabulate==0.9.0
+
+# Authentication
+bcrypt==4.1.2
+
+# Data Analysis and Visualization
+pandas==2.1.4
+matplotlib==3.8.2
+numpy==1.26.2
+openpyxl==3.1.2
+
+# PDF Report Generation
+reportlab==4.0.9

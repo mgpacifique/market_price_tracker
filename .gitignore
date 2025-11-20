@@ -26,6 +26,7 @@ wheels/
 
 # Virtual Environment
 venv/
+.venv/
 env/
 ENV/
 
@@ -35,10 +36,16 @@ ENV/
 *.swp
 *.swo
 
-# Exports
+# Generated Reports and Exports
+reports/
 exports/
+*.pdf
+*.xlsx
 *.csv
+
+# Temporary files
 *.txt
+!requirements.txt
 
 # OS
 .DS_Store

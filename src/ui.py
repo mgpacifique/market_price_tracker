@@ -254,14 +254,27 @@ class UI:
                     return value
             except ValueError:
                 UI.print_error(f"Invalid input. Please enter a valid {input_type.__name__}.")
+            except KeyboardInterrupt:
+                print("\n")
+                UI.print_warning("Input cancelled")
+                raise  # Re-raise to be handled by caller
     
     @staticmethod
     def confirm(prompt):
         """Ask for yes/no confirmation"""
-        response = input(f"{UI.COLORS['YELLOW']}{prompt} (y/n): {UI.COLORS['END']}").lower()
-        return response in ['y', 'yes']
+        try:
+            response = input(f"{UI.COLORS['YELLOW']}{prompt} (y/n): {UI.COLORS['END']}").lower()
+            return response in ['y', 'yes']
+        except KeyboardInterrupt:
+            print("\n")
+            UI.print_warning("Confirmation cancelled")
+            return False  # Default to "no" on interrupt
     
     @staticmethod
     def pause():
         """Pause and wait for user to press Enter"""
-        input(f"\n{UI.COLORS['CYAN']}Press Enter to continue...{UI.COLORS['END']}")
+        try:
+            input(f"\n{UI.COLORS['CYAN']}Press Enter to continue...{UI.COLORS['END']}")
+        except KeyboardInterrupt:
+            print("\n")
+            pass  # Just continue on interrupt
