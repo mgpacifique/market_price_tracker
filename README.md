@@ -167,7 +167,9 @@ The Local Agricultural Market Price Tracker is a production-ready Python applica
 
 - Automatic database cleanup
 
-- Session management### Step 3: Set Up MySQL Database
+- Session management
+
+### Step 3: Set Up MySQL Database
 
 
 
