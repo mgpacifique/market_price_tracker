@@ -85,14 +85,14 @@ The Local Agricultural Market Price Tracker is a production-ready Python applica
 
 ## 🚀 Quick Start
 
-\`\`\`bash
+```bash
 # Clone the repository
 git clone https://github.com/mgpacifique/market_price_tracker.git
 cd market_price_tracker
 
 # One-command setup and run
 bash start.sh
-\`\`\`
+```
 
 **That's it!** The script will:
 - ✅ Check Python installation
@@ -102,8 +102,8 @@ bash start.sh
 - ✅ Start the application
 
 **Default Login:**
-- Username: \`admin\`
-- Password: \`admin123\`
+- Username: `admin`
+- Password: `admin123`
 
 ⚠️ **Change the admin password after first login!**
 
@@ -120,14 +120,14 @@ For detailed setup instructions, see [GETTING_STARTED.md](GETTING_STARTED.md) or
 
 ### Option 1: Automated Setup (Recommended)
 
-\`\`\`bash
+```bash
 # First-time setup
 bash start.sh
-\`\`\`
+```
 
 ### Option 2: Manual Setup
 
-\`\`\`bash
+```bash
 # Create virtual environment
 python3 -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
@@ -144,7 +144,7 @@ python scripts/run_migrations.py
 
 # Start application
 python main_enhanced.py
-\`\`\`
+```
 
 For complete installation guide, see [docs/INSTALLATION.md](docs/INSTALLATION.md).
 
@@ -179,7 +179,7 @@ See [GETTING_STARTED.md](GETTING_STARTED.md) for detailed usage workflows.
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 market_price_tracker/
 ├── main_enhanced.py              # Main application entry point
 ├── setup.sh                      # Automated setup script
@@ -222,7 +222,7 @@ market_price_tracker/
 │   └── demo_interrupt_handling.py
 │
 └── reports/                     # Generated reports (gitignored)
-\`\`\`
+```
 
 ---
 
@@ -259,19 +259,19 @@ market_price_tracker/
 ## 🗄️ Database Schema
 
 ### Core Tables
-- \`users\` - User accounts and authentication
-- \`user_sessions\` - Session management
-- \`markets\` - Market information
-- \`products\` - Product catalog
-- \`prices\` - Price records with history
+- `users` - User accounts and authentication
+- `user_sessions` - Session management
+- `markets` - Market information
+- `products` - Product catalog
+- `prices` - Price records with history
 
 ### Order Management
-- \`orders\` - Order header information
-- \`order_items\` - Order line items
-- \`notifications\` - System notifications
+- `orders` - Order header information
+- `order_items` - Order line items
+- `notifications` - System notifications
 
 ### Analytics
-- \`price_history_summary\` - Aggregated price data
+- `price_history_summary` - Aggregated price data
 
 See [docs/DEVELOPER_GUIDE.md](docs/DEVELOPER_GUIDE.md) for complete schema documentation.
 
@@ -280,24 +280,24 @@ See [docs/DEVELOPER_GUIDE.md](docs/DEVELOPER_GUIDE.md) for complete schema docum
 ## 🧪 Testing
 
 ### Run All Tests
-\`\`\`bash
+```bash
 # Activate virtual environment first
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Run test suite
 python tests/test_features.py
-\`\`\`
+```
 
 ### Test Keyboard Interrupt Handling
-\`\`\`bash
+```bash
 python tests/demo_interrupt_handling.py
-\`\`\`
+```
 
 ### Using Run Script
-\`\`\`bash
+```bash
 # Run tests via launcher
 ./run.sh --test
-\`\`\`
+```
 
 See [GETTING_STARTED.md](GETTING_STARTED.md) for complete test scenarios.
 
@@ -308,13 +308,13 @@ See [GETTING_STARTED.md](GETTING_STARTED.md) for complete test scenarios.
 Contributions are welcome! Here's how:
 
 1. **Fork** the repository
-2. **Create** a feature branch (\`git checkout -b feature/amazing-feature\`)
-3. **Commit** your changes (\`git commit -m 'Add amazing feature'\`)
-4. **Push** to the branch (\`git push origin feature/amazing-feature\`)
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
 5. **Open** a Pull Request
 
 ### Development Setup
-\`\`\`bash
+```bash
 # Clone your fork
 git clone https://github.com/YOUR_USERNAME/market_price_tracker.git
 cd market_price_tracker
@@ -329,7 +329,7 @@ pip install -r requirements.txt
 
 # Run tests
 python tests/test_features.py
-\`\`\`
+```
 
 See [docs/DEVELOPER_GUIDE.md](docs/DEVELOPER_GUIDE.md) for development guidelines.
 
