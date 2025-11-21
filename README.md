@@ -1,20 +1,24 @@
-# 🌾 Local Agricultural Market Price Tracker# Local Agricultural Market Price Tracker
+# 🌾 Local Agricultural Market Price Tracker
 
 
 
-> A comprehensive multi-user system for tracking agricultural market prices, managing orders, and generating analytics reports.## Overview
+> A comprehensive multi-user system for tracking agricultural market prices, managing orders, and generating analytics reports.
+
+## Overview
 
 
 
-[![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://www.python.org/)The Local Agricultural Market Price Tracker is a comprehensive Python application designed to help farmers and market participants access fair and reliable market information for agricultural products. The system enables users to track current prices, compare prices across different markets, and analyze price trends over time.
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://www.python.org/) :The Local Agricultural Market Price Tracker is a comprehensive Python application designed to help farmers and market participants access fair and reliable market information for agricultural products. The system enables users to track current prices, compare prices across different markets, and analyze price trends over time.
 
 [![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-orange)](https://www.mysql.com/)
 
-[![License](https://img.shields.io/badge/License-Educational-green)](LICENSE)## Features
+[![License](https://img.shields.io/badge/License-Educational-green)](LICENSE)
+
+## Features
 
 
 
----### Core Functionality
+### Core Functionality
 
 
 
@@ -68,7 +72,8 @@ The Local Agricultural Market Price Tracker is a production-ready Python applica
 
 
 
----## Technology Stack
+---
+## Technology Stack
 
 
 
@@ -148,7 +153,9 @@ The Local Agricultural Market Price Tracker is a production-ready Python applica
 
 - Price trend charts
 
-- Market comparison visualizations### Step 2: Install Python Dependencies
+- Market comparison visualizations
+
+### Step 2: Install Python Dependencies
 
 
 
@@ -160,7 +167,9 @@ The Local Agricultural Market Price Tracker is a production-ready Python applica
 
 - Automatic database cleanup
 
-- Session management### Step 3: Set Up MySQL Database
+- Session management
+
+### Step 3: Set Up MySQL Database
 
 
 
