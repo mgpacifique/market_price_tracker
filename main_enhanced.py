@@ -6,6 +6,7 @@ Main application with authentication and role-based access
 
 import sys
 from datetime import date
+from tabulate import tabulate
 from src.database import Database
 from src.price_manager import PriceManager
 from src.auth import AuthManager
@@ -623,12 +624,144 @@ class EnhancedMarketPriceTracker:
             AuthUI.pause()
     
     def browse_products(self):
-        """Browse all products and prices"""
-        prices = self.price_manager.get_current_prices()
+        """Browse all products and prices with filtering options"""
         AuthUI.clear_screen()
         AuthUI.print_header("BROWSE PRODUCTS & PRICES")
-        AuthUI.display_prices(prices)
+        
+        print(f"{AuthUI.COLORS['BOLD']}Filter By:{AuthUI.COLORS['END']}\n")
+        print("  1. View All Products")
+        print("  2. Filter by Category")
+        print("  3. Filter by Market")
+        print("  4. Back to Main Menu")
+        
+        choice = input(f"\n{AuthUI.COLORS['YELLOW']}Enter your choice (1-4): {AuthUI.COLORS['END']}").strip()
+        
+        if choice == '1':
+            # Show all products
+            prices = self.price_manager.get_current_prices()
+            AuthUI.clear_screen()
+            AuthUI.print_header("ALL PRODUCTS & PRICES")
+            AuthUI.display_prices(prices)
+            
+        elif choice == '2':
+            # Filter by category
+            self.browse_by_category()
+            
+        elif choice == '3':
+            # Filter by market
+            self.browse_by_market()
+            
+        elif choice == '4':
+            return
+        else:
+            AuthUI.print_error("Invalid choice.")
+        
         AuthUI.pause()
+    
+    def browse_by_category(self):
+        """Browse products filtered by category"""
+        # Get all unique categories
+        query = "SELECT DISTINCT category FROM products ORDER BY category"
+        categories = self.db.execute_query(query, fetch=True)
+        
+        if not categories:
+            AuthUI.print_warning("No categories found.")
+            return
+        
+        AuthUI.clear_screen()
+        AuthUI.print_header("BROWSE BY CATEGORY")
+        
+        print(f"{AuthUI.COLORS['BOLD']}Available Categories:{AuthUI.COLORS['END']}\n")
+        for idx, cat_row in enumerate(categories, 1):
+            print(f"  {idx}. {cat_row['category']}")
+        
+        cat_num = AuthUI.get_input(f"\nSelect category (1-{len(categories)}): ", int)
+        
+        if 1 <= cat_num <= len(categories):
+            selected_category = categories[cat_num - 1]['category']
+            
+            # Get prices for this category
+            query = """
+                SELECT p.product_name, m.market_name, pr.price, pr.date, 
+                       p.unit, p.category
+                FROM prices pr
+                JOIN products p ON pr.product_id = p.product_id
+                JOIN markets m ON pr.market_id = m.market_id
+                WHERE p.category = %s
+                AND pr.date = (
+                    SELECT MAX(date) 
+                    FROM prices pr2 
+                    WHERE pr2.product_id = pr.product_id 
+                    AND pr2.market_id = pr.market_id
+                )
+                ORDER BY p.product_name, m.market_name
+            """
+            
+            prices_data = self.db.execute_query(query, (selected_category,), fetch=True)
+            
+            AuthUI.clear_screen()
+            AuthUI.print_header(f"PRODUCTS IN: {selected_category.upper()}")
+            
+            if prices_data:
+                headers = ["Product", "Market", "Price", "Unit", "Date"]
+                rows = [[row['product_name'], row['market_name'], 
+                        f"${row['price']:,.2f}", row['unit'], 
+                        row['date'].strftime('%Y-%m-%d')] for row in prices_data]
+                print(tabulate(rows, headers=headers, tablefmt="grid"))
+                print(f"\n{AuthUI.COLORS['GREEN']}Total items: {len(prices_data)}{AuthUI.COLORS['END']}")
+            else:
+                AuthUI.print_warning(f"No prices found for category: {selected_category}")
+    
+    def browse_by_market(self):
+        """Browse products filtered by market"""
+        markets = self.price_manager.get_all_markets()
+        
+        if not markets:
+            AuthUI.print_warning("No markets found.")
+            return
+        
+        AuthUI.clear_screen()
+        AuthUI.print_header("BROWSE BY MARKET")
+        
+        print(f"{AuthUI.COLORS['BOLD']}Available Markets:{AuthUI.COLORS['END']}\n")
+        for idx, market in enumerate(markets, 1):
+            print(f"  {idx}. {market.market_name} - {market.location}")
+        
+        market_num = AuthUI.get_input(f"\nSelect market (1-{len(markets)}): ", int)
+        
+        if 1 <= market_num <= len(markets):
+            selected_market = markets[market_num - 1]
+            
+            # Get prices for this market
+            query = """
+                SELECT p.product_name, p.category, pr.price, pr.date, p.unit
+                FROM prices pr
+                JOIN products p ON pr.product_id = p.product_id
+                WHERE pr.market_id = %s
+                AND pr.date = (
+                    SELECT MAX(date) 
+                    FROM prices pr2 
+                    WHERE pr2.product_id = pr.product_id 
+                    AND pr2.market_id = pr.market_id
+                )
+                ORDER BY p.category, p.product_name
+            """
+            
+            prices_data = self.db.execute_query(query, (selected_market.market_id,), fetch=True)
+            
+            AuthUI.clear_screen()
+            AuthUI.print_header(f"PRODUCTS AT: {selected_market.market_name.upper()}")
+            print(f"{AuthUI.COLORS['CYAN']}Location: {selected_market.location}{AuthUI.COLORS['END']}\n")
+            
+            if prices_data:
+                headers = ["Product", "Category", "Price", "Unit", "Date"]
+                rows = [[row['product_name'], row['category'], 
+                        f"${row['price']:,.2f}", row['unit'], 
+                        row['date'].strftime('%Y-%m-%d')] for row in prices_data]
+                print(tabulate(rows, headers=headers, tablefmt="grid"))
+                print(f"\n{AuthUI.COLORS['GREEN']}Total items: {len(prices_data)}{AuthUI.COLORS['END']}")
+            else:
+                AuthUI.print_warning(f"No prices found for market: {selected_market.market_name}")
     
     def compare_prices_customer(self):
         """Compare prices across markets"""
